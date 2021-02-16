@@ -9,10 +9,10 @@ script:
   - docker run j3rg/react-test npm test -- --watchAll=false
 
 after_success:
-  - docker build -t j3rg/multi-client -f ./client
-  - docker build -t j3rg/multi-nginx -f ./nginx
-  - docker build -t j3rg/multi-server -f ./server
-  - docker build -t j3rg/multi-worker -f ./worker
+  - docker build -t j3rg/multi-client ./client
+  - docker build -t j3rg/multi-nginx ./nginx
+  - docker build -t j3rg/multi-server ./server
+  - docker build -t j3rg/multi-worker ./worker
   # Log in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u $"DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
